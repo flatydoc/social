@@ -1,12 +1,14 @@
-.sidebar {
+.sideBar {
   grid-area: sidebar;
-  background-color: wheat;
-}
 
-a {
-  color: green;
-}
+  background-color: var(--grey);
 
-.active {
-  color: blue;
+  .sideBarNav {
+    position: sticky;
+    top: 70px;
+
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 4px 2px 21px 3px rgba(32, 33, 36, 0.5);
+  }
 }

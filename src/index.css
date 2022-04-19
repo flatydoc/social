@@ -16,6 +16,7 @@ code {
   padding: 0;
   margin: 0;
   border: 0;
+  font-size: 15px;
 }
 
 *,
@@ -51,6 +52,7 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  background-color: var(--grey);
 }
 
 input,

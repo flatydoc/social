@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./Friends.module.scss";
+import styles from "./friends.module.scss";
 
 export const Friends = () => {
   return (
-    <div className={classes.friends}>
+    <div className={styles.friends}>
       <h2>Friends</h2>
     </div>
   );

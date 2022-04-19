@@ -1,10 +1,13 @@
 import React from "react";
-import classes from "./Header.module.scss";
+import styles from "./header.module.scss";
+import { HeaderLogo } from "./HeaderLogo/HeaderLogo";
+import { HeaderOptions } from "./HeaderOptions/HeaderOptions";
 
 export const Header = () => {
   return (
-    <div className={classes.header}>
-      <h2>Header</h2>
-    </div>
+    <header className={styles.header}>
+      <HeaderLogo />
+      <HeaderOptions />
+    </header>
   );
 };

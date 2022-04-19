@@ -1,11 +1,11 @@
 import React from "react";
+import styles from "./profile.module.scss";
 import { Posts } from "./Posts/Posts";
-import classes from "./Profile.module.scss";
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 
 export const Profile = () => {
   return (
-    <div className={classes.profile}>
+    <div className={styles.profile}>
       <h2>Profile</h2>
       <ProfileInfo />
       <Posts />

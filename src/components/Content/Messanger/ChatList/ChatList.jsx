@@ -1,6 +1,6 @@
 import React from "react";
 import { ChatItem } from "./ChatItem/ChatItem";
-import classes from "./ChatList.module.scss";
+import styles from "./chatList.module.scss";
 
 export const ChatList = () => {
   let chatListData = [
@@ -20,7 +20,7 @@ export const ChatList = () => {
   ));
 
   return (
-    <div className={classes.chatList}>
+    <div className={styles.chatList}>
       <h3>Chat List</h3>
       {chatListElements}
     </div>

@@ -1,34 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import classes from "./Sidebar.module.scss";
+import { PrimeIcons } from "primereact/api";
+import { SideBarLink } from "./SideBarLink/SideBarLink";
+import styles from "./sideBar.module.scss";
 
-const setActive = ({ isActive }) => (isActive ? classes.active : "");
-
-export const Sidebar = () => {
-  return (
-    <nav className={classes.sidebar}>
-      <ul>
-        <li>
-          <NavLink to="/profile" className={setActive}>
-            Profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/messanger" className={setActive}>
-            Messanger
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/news" className={setActive}>
-            News
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/friends" className={setActive}>
-            Friends
-          </NavLink>
-        </li>
-      </ul>
+export const SideBar = () => (
+  <div className={styles.sideBar}>
+    <nav className={styles.sideBarNav}>
+      <SideBarLink link="/profile" name="Profile" icon={PrimeIcons.USER} />
+      <SideBarLink
+        link="/messanger"
+        name="Messanger"
+        icon={PrimeIcons.SEND}
+        value="467"
+      />
+      <SideBarLink link="/news" name="News" icon={PrimeIcons.LIST} value="2" />
+      <SideBarLink
+        link="/friends"
+        name="Friends"
+        icon={PrimeIcons.USERS}
+        value="45"
+      />
+      <SideBarLink link="/settings" name="Settings" icon={PrimeIcons.COG} />
     </nav>
-  );
-};
+  </div>
+);

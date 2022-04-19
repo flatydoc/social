@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./Post.module.scss";
+import styles from "./post.module.scss";
 
 export const Post = (props) => {
   return (
-    <div className={classes.post}>
+    <div className={styles.post}>
       <h2>{props.message}</h2>
     </div>
   );

@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./ProfileInfo.module.scss";
+import styles from "./profileInfo.module.scss";
 
 export const ProfileInfo = () => {
   return (
-    <div className={classes.profileInfo}>
+    <div className={styles.profileInfo}>
       <h2>Profile Info</h2>
     </div>
   );
