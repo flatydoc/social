@@ -4,7 +4,8 @@ import styles from "./post.module.scss";
 export const Post = (props) => {
   return (
     <div className={styles.post}>
-      <h2>{props.message}</h2>
+      <p>{props.text}</p>
+      <p>{props.likesCount}</p>
     </div>
   );
 };

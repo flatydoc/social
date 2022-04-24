@@ -8,13 +8,13 @@ import { Header } from "./Header/Header";
 import { SideBar } from "./SideBar/SideBar";
 import { Content } from "./Content/Content";
 
-export const App = () => {
+export const App = (props) => {
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <Header />
-        <SideBar />
-        <Content />
+        <SideBar state={props.state} />
+        <Content state={props.state} dispatch={props.dispatch} />
       </div>
     </BrowserRouter>
   );

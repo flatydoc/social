@@ -6,12 +6,25 @@ import { Messanger } from "./Messanger/Messanger";
 import { News } from "./News/News";
 import { Friends } from "./Friends/Friends";
 
-export const Content = () => {
+export const Content = (props) => {
   return (
     <div className={styles.content}>
       <Routes>
-        <Route path="/profile/*" element={<Profile />} />
-        <Route path="/messanger/*" element={<Messanger />} />
+        <Route
+          path="/profile/*"
+          element={
+            <Profile profile={props.state.profile} dispatch={props.dispatch} />
+          }
+        />
+        <Route
+          path="/messanger/*"
+          element={
+            <Messanger
+              messanger={props.state.messanger}
+              dispatch={props.dispatch}
+            />
+          }
+        />
         <Route path="/news/*" element={<News />} />
         <Route path="/friends/*" element={<Friends />} />
       </Routes>
