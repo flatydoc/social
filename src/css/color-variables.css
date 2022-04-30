@@ -1,5 +1,17 @@
 :root {
   --white: rgb(255, 255, 255);
+  --light-grey: rgb(173, 174, 178);
   --grey: rgb(53, 54, 58);
   --dark: rgb(32, 33, 36);
+  --blue: rgb(64, 133, 243);
+
+  --background: var(--white);
+  --font-color: var(--dark);
+  --active: var(--light-grey);
+}
+
+[data-theme="dark"] {
+  --background: var(--grey);
+  --font-color: var(--white);
+  --active: var(--dark);
 }

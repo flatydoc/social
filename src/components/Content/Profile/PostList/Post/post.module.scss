@@ -1,2 +1,12 @@
 .post {
+  background-color: var(--background);
+  box-shadow: 4px 2px 6px 3px rgba(32, 33, 36, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  .postOptionsBtn {
+    background-color: transparent;
+    border: none;
+  }
 }

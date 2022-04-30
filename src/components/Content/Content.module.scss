@@ -4,5 +4,12 @@
   border-radius: 10px;
   box-shadow: 4px 2px 21px 3px rgba(32, 33, 36, 0.5);
 
-  background-color: var(--grey);
+  padding: 25px;
+
+  h2 {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }

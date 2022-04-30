@@ -1,0 +1,24 @@
+.settings {
+  .settingItem {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 20px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+    background-color: var(--active);
+
+    font-weight: 600;
+
+    p {
+      padding-left: 20px;
+    }
+
+    button {
+      font-size: 0;
+    }
+  }
+}

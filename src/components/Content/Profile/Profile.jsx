@@ -5,9 +5,10 @@ import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 
 export const Profile = (props) => {
   return (
-    <div className={styles.profile}>
+    <section className={styles.profile}>
+      <h2 className="visually-hidden">Profile</h2>
       <ProfileInfo />
-      <PostList postData={props.profile.postData} dispatch={props.dispatch} />
-    </div>
+      <PostList postList={props.profile} dispatch={props.dispatch} />
+    </section>
   );
 };

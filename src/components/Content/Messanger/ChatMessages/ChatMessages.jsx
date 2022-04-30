@@ -4,8 +4,8 @@ import { Message } from "./Message/Message";
 import { sendMessageActionCreator } from "../../../../redux/store";
 
 export const ChatMessages = (props) => {
-  let chatMessagesElements = props.chatMessagesData.map((message, id) => (
-    <Message key={id} id={message.id} message={message.message} />
+  let chatMessagesElements = props.chatMessagesData.map((message, index) => (
+    <Message key={index} id={message.id} message={message.message} />
   ));
 
   let sendMessageText = React.createRef();
@@ -13,6 +13,7 @@ export const ChatMessages = (props) => {
   let sendMessage = () => {
     let text = sendMessageText.current.value;
     props.dispatch(sendMessageActionCreator(text));
+    sendMessageText.current.value = "";
   };
 
   return (

@@ -11,7 +11,7 @@ export const SideBar = (props) => {
   );
 
   return (
-    <div className={styles.sideBar}>
+    <aside className={styles.sideBar}>
       <nav className={styles.sideBarNav}>
         <SideBarLink link="/profile" name="Profile" icon={PrimeIcons.USER} />
         <SideBarLink
@@ -25,24 +25,24 @@ export const SideBar = (props) => {
           link="/news"
           name="News"
           icon={PrimeIcons.LIST}
-          value="2"
+          value="0"
           severity="info"
         />
         <SideBarLink
           link="/friends"
           name="Friends"
           icon={PrimeIcons.USERS}
-          value="45"
+          value="0"
           severity="info"
         />
         <SideBarLink
           link="/settings"
           name="Settings"
           icon={PrimeIcons.COG}
-          value="1"
+          value="0"
           severity="danger"
         />
       </nav>
-    </div>
+    </aside>
   );
 };

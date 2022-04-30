@@ -3,8 +3,8 @@ import styles from "./friends.module.scss";
 
 export const Friends = () => {
   return (
-    <div className={styles.friends}>
+    <section className={styles.friends}>
       <h2>Friends</h2>
-    </div>
+    </section>
   );
 };

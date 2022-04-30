@@ -1,25 +1,50 @@
 .sideBarLink {
+  position: relative;
+
   display: flex;
   align-items: center;
 
-  width: 200px;
+  width: 80%;
   height: 40px;
-  margin: 10px auto;
+  margin: 0 auto 10px auto;
   border-radius: 10px;
 
   color: var(--white);
 
-  .navIcon {
-    margin: 0 20px 0 10px;
+  transition: all 0.5s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--active);
   }
 
-  .navBadge {
+  .icon {
+    margin: 0 10px;
+  }
+
+  .badge {
     margin: 0 10px 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .icon {
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 0;
+    }
+
+    .badge {
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      margin: 0;
+    }
   }
 }
 
 .active {
-  background-color: var(--dark);
-
-  transition: all 0.5s ease;
+  background-color: var(--active);
+  transform: translateX(5px);
 }

@@ -4,17 +4,27 @@
   display: flex;
   align-items: center;
 
-  margin-left: 25px;
+  width: 80%;
+  margin: 10px auto;
 
   img {
-    height: 40px;
+    height: 20px;
     width: auto;
-    margin-right: 10px;
+    margin: 0 10px;
   }
 
   h1 {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
-    color: var(--white);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 0;
+    }
+
+    img {
+      margin: 0 auto;
+    }
   }
 }

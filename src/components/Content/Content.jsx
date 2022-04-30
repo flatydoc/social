@@ -5,10 +5,11 @@ import { Profile } from "./Profile/Profile";
 import { Messanger } from "./Messanger/Messanger";
 import { News } from "./News/News";
 import { Friends } from "./Friends/Friends";
+import { Settings } from "./Settings/Settings";
 
 export const Content = (props) => {
   return (
-    <div className={styles.content}>
+    <main className={styles.content}>
       <Routes>
         <Route
           path="/profile/*"
@@ -27,7 +28,11 @@ export const Content = (props) => {
         />
         <Route path="/news/*" element={<News />} />
         <Route path="/friends/*" element={<Friends />} />
+        <Route
+          path="/settings/*"
+          element={<Settings switchTheme={props.switchTheme} />}
+        />
       </Routes>
-    </div>
+    </main>
   );
 };

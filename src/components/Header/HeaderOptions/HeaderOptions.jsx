@@ -4,7 +4,7 @@ import styles from "./headerOptions.module.scss";
 export const HeaderOptions = () => {
   return (
     <div className={styles.headerOptions}>
-      <h2>HeaderOptions</h2>
+      <h3>HeaderOPtions</h3>
     </div>
   );
 };

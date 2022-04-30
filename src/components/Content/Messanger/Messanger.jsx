@@ -5,7 +5,8 @@ import styles from "./messanger.module.scss";
 
 export const Messanger = (props) => {
   return (
-    <div className={styles.messanger}>
+    <section className={styles.messanger}>
+      <h2>Messanger</h2>
       <ChatList
         chatListData={props.messanger.chatListData}
         chatMessagesData={props.messanger.chatMessagesData}
@@ -14,6 +15,6 @@ export const Messanger = (props) => {
         chatMessagesData={props.messanger.chatMessagesData}
         dispatch={props.dispatch}
       />
-    </div>
+    </section>
   );
 };

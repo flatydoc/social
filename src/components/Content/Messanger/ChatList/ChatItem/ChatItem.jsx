@@ -4,20 +4,20 @@ import styles from "./chatItem.module.scss";
 import { Avatar } from "primereact/avatar";
 import { Badge } from "primereact/badge";
 
-export const ChatItem = (props) => {
+export const ChatItem = ({ id, name, value }) => {
   const customLink = ({ isActive }) =>
-    isActive ? styles.chatItem + " " + styles.active : styles.chatLink;
+    isActive ? styles.chatItem + " " + styles.active : styles.chatItem;
 
-  let path = "/messanger/" + props.id;
+  let path = "/messanger/" + id;
 
   return (
-    <div className={styles.chatItem}>
-      <NavLink to={path} className={customLink}>
-        <p>{props.name}</p>
-        <Avatar icon="pi pi-user" size="large">
-          {props.value > 0 && <Badge value={props.value} severity="info" />}
-        </Avatar>
-      </NavLink>
-    </div>
+    <NavLink to={path} className={customLink}>
+      <p>{name}</p>
+      <Avatar icon="pi pi-user" size="large" shape="circle">
+        {value > 0 && (
+          <Badge value={value} className={styles.badge} severity="info" />
+        )}
+      </Avatar>
+    </NavLink>
   );
 };
