@@ -7,6 +7,7 @@ import styles from "./post.module.scss";
 import { Menu } from "primereact/menu";
 import { Button } from "primereact/button";
 import { ConfirmDialog } from "primereact/confirmdialog";
+import { ToggleButton } from "primereact/togglebutton";
 
 export const Post = (props) => {
   let deletePost = () => {
@@ -34,18 +35,31 @@ export const Post = (props) => {
   ];
 
   const menu = useRef(null);
+  const [checked, setChecked] = useState(false);
   const [visible, setVisible] = useState(false);
 
   return (
     <div className={styles.post}>
-      <p>{props.text}</p>
-      <p>{props.likesCount}</p>
-      <Menu model={items} popup ref={menu} />
+      <div className={styles.postText}>{props.text}</div>
       <Button
         className={styles.postOptionsBtn}
         icon="pi pi-ellipsis-h"
         onClick={(event) => menu.current.toggle(event)}
       />
+      <Menu model={items} popup ref={menu} />
+      <div className={styles.commentText}></div>
+      <div className={styles.likesPost}>
+        <p>{props.likesCount}</p>
+        <ToggleButton
+          className={styles.likesPostBtn}
+          checked={checked}
+          onChange={(e) => setChecked(e.value)}
+          onIcon="pi pi-heart-fill"
+          offIcon="pi pi-heart"
+          onLabel
+          offLabel
+        />
+      </div>
       <ConfirmDialog
         visible={visible}
         onHide={() => setVisible(false)}

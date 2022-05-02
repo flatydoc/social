@@ -1,12 +1,59 @@
 .post {
-  background-color: var(--background);
-  box-shadow: 4px 2px 6px 3px rgba(32, 33, 36, 0.2);
-  border-radius: 10px;
+  display: grid;
+  grid-template-areas:
+    "postText postOptionsBtn"
+    "commentText likesPost";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 48px;
+  gap: 20px;
+
+  position: relative;
+
   margin-bottom: 20px;
   padding: 20px;
 
+  border-radius: 10px;
+
+  background-color: var(--background);
+  box-shadow: 4px 2px 6px 3px rgba(32, 33, 36, 0.4);
+
+  .postText {
+    grid-area: postText;
+    border: 1px solid green;
+    overflow: scroll;
+    padding: 10px;
+    line-height: 30px;
+  }
   .postOptionsBtn {
-    background-color: transparent;
+    grid-area: postOptionsBtn;
+
     border: none;
+
+    background-color: transparent;
+    border: 1px solid yellow;
+    width: 48px;
+    height: 40px;
+  }
+
+  .commentText {
+    grid-area: commentText;
+
+    border-radius: 10px;
+    height: 40px;
+
+    background-color: var(--active);
+  }
+
+  .likesPost {
+    display: flex;
+    align-items: center;
+    grid-area: likesPost;
+    border: 1px solid red;
+
+    .likesPostBtn {
+      background-color: transparent;
+      width: 20px;
+      height: 10px;
+    }
   }
 }

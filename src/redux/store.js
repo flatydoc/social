@@ -4,6 +4,7 @@ const DELETE_POST = "DELETE-POST";
 const CHANGE_POST_TEXT = "CHANGE-POST-TEXT";
 const CLEAN_POST_TEXT = "CLEAN-POST-TEXT";
 const SEND_MESSAGE = "SEND-MESSAGE";
+const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT";
 
 export let store = {
   _state: {
@@ -16,7 +17,9 @@ export let store = {
         { id: 4, name: "Alex", value: 0 },
       ],
 
-      chatMessagesData: [{ id: "", message: "" }],
+      chatMessagesData: [],
+
+      newMessageText: "",
     },
 
     profile: {
@@ -66,11 +69,16 @@ export let store = {
       this._callSubscriber(this._state);
     } else if (action.type === SEND_MESSAGE) {
       let newMessage = {
-        id: 3,
-        message: action.text,
+        id: this._state.messanger.chatMessagesData.forEach(
+          (item, i) => (item.id = i + 1)
+        ),
+        message: this._state.messanger.newMessageText,
       };
-
       this._state.messanger.chatMessagesData.push(newMessage);
+      this._state.messanger.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === CHANGE_MESSAGE_TEXT) {
+      this._state.messanger.newMessageText = action.newText;
       this._callSubscriber(this._state);
     }
   },
@@ -99,9 +107,13 @@ export const cleanPostTextActionCreator = () => ({
   type: CLEAN_POST_TEXT,
 });
 
-export const sendMessageActionCreator = (text) => ({
+export const sendMessageActionCreator = () => ({
   type: SEND_MESSAGE,
-  text: text,
+});
+
+export const changeMessageTextActionCreator = (text) => ({
+  type: CHANGE_MESSAGE_TEXT,
+  newText: text,
 });
 
 window.store = store;

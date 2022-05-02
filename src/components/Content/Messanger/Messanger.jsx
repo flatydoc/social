@@ -11,10 +11,7 @@ export const Messanger = (props) => {
         chatListData={props.messanger.chatListData}
         chatMessagesData={props.messanger.chatMessagesData}
       />
-      <ChatMessages
-        chatMessagesData={props.messanger.chatMessagesData}
-        dispatch={props.dispatch}
-      />
+      <ChatMessages messanger={props.messanger} dispatch={props.dispatch} />
     </section>
   );
 };
