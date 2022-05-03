@@ -11,29 +11,40 @@ let initialState = {
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let newPost = {
         id: state.postData.forEach((item, i) => (item.id = i + 1)),
         text: state.newPostText,
         likesCount: 0,
       };
+      let stateCopy = { ...state };
 
-      state.postData.push(newPost);
-      state.newPostText = "";
+      stateCopy.postData = [...state.postData];
+      stateCopy.postData.push(newPost);
+      stateCopy.newPostText = "";
+      return stateCopy;
+    }
+    case DELETE_POST: {
+      let stateCopy = { ...state };
+      let i = stateCopy.postData.findIndex((item) => item.id === action.id);
+      stateCopy.postData.splice(i, 1);
       return state;
-    case DELETE_POST:
-      let i = state.postData.findIndex((item) => item.id === action.id);
-      state.postData.splice(i, 1);
-      return state;
-    case PIN_POST:
+    }
+    case PIN_POST: {
+      let stateCopy = { ...state };
       console.log("pin");
-      return state;
-    case CHANGE_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
-    case CLEAN_POST_TEXT:
-      state.newPostText = "";
-      return state;
+      return stateCopy;
+    }
+    case CHANGE_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
+    }
+    case CLEAN_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newPostText = "";
+      return stateCopy;
+    }
     default:
       return state;
   }

@@ -17,17 +17,22 @@ let initialState = {
 
 export const messangerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEND_MESSAGE:
+    case SEND_MESSAGE: {
       let newMessage = {
         id: state.chatMessagesData.forEach((item, i) => (item.id = i + 1)),
         message: state.newMessageText,
       };
-      state.chatMessagesData.push(newMessage);
-      state.newMessageText = "";
-      return state;
-    case CHANGE_MESSAGE_TEXT:
-      state.newMessageText = action.newText;
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.chatMessagesData = [...state.chatMessagesData];
+      stateCopy.chatMessagesData.push(newMessage);
+      stateCopy.newMessageText = "";
+      return stateCopy;
+    }
+    case CHANGE_MESSAGE_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newMessageText = action.newText;
+      return stateCopy;
+    }
     default:
       return state;
   }

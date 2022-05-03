@@ -11,21 +11,8 @@ export const Content = (props) => {
   return (
     <main className={styles.content}>
       <Routes>
-        <Route
-          path="/profile/*"
-          element={
-            <Profile profile={props.state.profile} dispatch={props.dispatch} />
-          }
-        />
-        <Route
-          path="/messanger/*"
-          element={
-            <Messanger
-              messanger={props.state.messanger}
-              dispatch={props.dispatch}
-            />
-          }
-        />
+        <Route path="/profile/*" element={<Profile />} />
+        <Route path="/messanger/*" element={<Messanger />} />
         <Route path="/news/*" element={<News />} />
         <Route path="/friends/*" element={<Friends />} />
         <Route

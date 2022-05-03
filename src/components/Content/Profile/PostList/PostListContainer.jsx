@@ -1,4 +1,4 @@
-import React from "react";
+import { connect } from "react-redux";
 import {
   addPostActionCreator,
   changePostTextActionCreator,
@@ -6,26 +6,27 @@ import {
 } from "../../../../redux/profileReducer";
 import { PostList } from "./PostList";
 
-export const PostListContainer = (props) => {
-  let addPost = () => {
-    props.dispatch(addPostActionCreator());
+let mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
   };
-
-  let newPostText = (text) => {
-    props.dispatch(changePostTextActionCreator(text));
-  };
-
-  let cleanPostText = () => {
-    props.dispatch(cleanPostTextActionCreator());
-  };
-
-  return (
-    <PostList
-      newPostText={newPostText}
-      addPost={addPost}
-      cleanPostText={cleanPostText}
-      postList={props.postList}
-      dispatch={props.dispatch}
-    />
-  );
 };
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: () => {
+      dispatch(addPostActionCreator());
+    },
+    newPostText: (text) => {
+      dispatch(changePostTextActionCreator(text));
+    },
+    cleanPostText: () => {
+      dispatch(cleanPostTextActionCreator());
+    },
+  };
+};
+
+export const PostListContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PostList);

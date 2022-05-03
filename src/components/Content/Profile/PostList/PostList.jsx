@@ -26,7 +26,7 @@ export const PostList = (props) => {
         <InputTextarea
           onChange={newPostText}
           ref={addPostText}
-          value={props.postList.newPostText}
+          value={props.profile.newPostText}
           className={styles.addPostText}
           placeholder="Anything new?"
           autoResize
@@ -42,7 +42,7 @@ export const PostList = (props) => {
           label="Publish"
         />
       </div>
-      <PostContainer post={props.postList} dispatch={props.dispatch} />
+      <PostContainer />
     </div>
   );
 };

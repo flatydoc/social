@@ -4,8 +4,8 @@ import { SideBarLink } from "./SideBarLink/SideBarLink";
 import styles from "./sideBar.module.scss";
 
 export const SideBar = (props) => {
-  let messagesCount = props.state.messanger.chatMessagesData.length;
-  let messagesCountTotal = props.state.messanger.chatListData.reduce(
+  let messagesCount = props.messanger.chatMessagesData.length;
+  let messagesCountTotal = props.messanger.chatListData.reduce(
     (prev, curr) => prev + curr.value * messagesCount,
     0
   );

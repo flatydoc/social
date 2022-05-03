@@ -8,7 +8,7 @@ export const Profile = (props) => {
     <section className={styles.profile}>
       <h2 className="visually-hidden">Profile</h2>
       <ProfileInfo />
-      <PostListContainer postList={props.profile} dispatch={props.dispatch} />
+      <PostListContainer />
     </section>
   );
 };

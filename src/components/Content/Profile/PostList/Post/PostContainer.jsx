@@ -1,27 +1,28 @@
-import React from "react";
+import { connect } from "react-redux";
 import {
   deletePostActionCreator,
   pinPostActionCreator,
 } from "../../../../../redux/profileReducer";
-import { Post } from "./Post";
+import { PostItem } from "./PostItem";
 
-export const PostContainer = (props) => {
-  let deletePost = (id) => {
-    props.dispatch(deletePostActionCreator(id));
+let mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
   };
-  let pinPost = (id) => {
-    props.dispatch(pinPostActionCreator(id));
-  };
-  let postElements = props.post.postData.map((post, index) => (
-    <Post
-      key={index}
-      id={post.id}
-      text={post.text}
-      likesCount={post.likesCount}
-      deletePost={deletePost}
-      pinPost={pinPost}
-    />
-  ));
-
-  return <div>{postElements}</div>;
 };
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    deletePost: (id) => {
+      dispatch(deletePostActionCreator(id));
+    },
+    pinPost: (id) => {
+      dispatch(pinPostActionCreator(id));
+    },
+  };
+};
+
+export const PostContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PostItem);

@@ -4,10 +4,10 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { Header } from "./Header/Header";
-import { SideBar } from "./SideBar/SideBar";
 import { Content } from "./Content/Content";
 import styles from "./app.module.scss";
 import useLocalStorage from "use-local-storage";
+import { SideBarContainer } from "./SideBar/SideBarContainer";
 
 export const App = (props) => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -25,12 +25,8 @@ export const App = (props) => {
     <BrowserRouter>
       <div className={styles.app} data-theme={theme}>
         <Header />
-        <SideBar state={props.state} />
-        <Content
-          state={props.state}
-          dispatch={props.dispatch}
-          switchTheme={switchTheme}
-        />
+        <SideBarContainer />
+        <Content switchTheme={switchTheme} />
       </div>
     </BrowserRouter>
   );
