@@ -1,13 +1,9 @@
 import React from "react";
 import styles from "./chatMessages.module.scss";
 import { Message } from "./Message/Message";
-import {
-  sendMessageActionCreator,
-  changeMessageTextActionCreator,
-} from "../../../../redux/store";
 
 export const ChatMessages = (props) => {
-  let chatMessagesElements = props.messanger.chatMessagesData.map(
+  let chatMessagesElements = props.chatMessage.chatMessagesData.map(
     (message, index) => (
       <Message key={index} id={message.id} message={message.message} />
     )
@@ -16,12 +12,12 @@ export const ChatMessages = (props) => {
   let sendMessageText = React.createRef();
 
   let sendMessage = () => {
-    props.dispatch(sendMessageActionCreator());
+    props.sendMessage();
   };
 
   let newMessageText = () => {
     let text = sendMessageText.current.value;
-    props.dispatch(changeMessageTextActionCreator(text));
+    props.newMessageText(text);
   };
 
   return (
@@ -31,7 +27,7 @@ export const ChatMessages = (props) => {
         onChange={newMessageText}
         ref={sendMessageText}
         className={styles.sendMessageText}
-        value={props.messanger.newMessageText}
+        value={props.chatMessage.newMessageText}
       />
       <button onClick={sendMessage} className={styles.sendMessageBtn}>
         Send Message

@@ -1,38 +1,23 @@
 import React from "react";
 import styles from "./postList.module.scss";
-import { Post } from "./Post/Post";
-import {
-  addPostActionCreator,
-  changePostTextActionCreator,
-  cleanPostTextActionCreator,
-} from "../../../../redux/store";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
+import { PostContainer } from "./Post/PostContainer";
 
 export const PostList = (props) => {
-  let postElements = props.postList.postData.map((post, index) => (
-    <Post
-      key={index}
-      id={post.id}
-      text={post.text}
-      likesCount={post.likesCount}
-      dispatch={props.dispatch}
-    />
-  ));
-
   let addPostText = React.createRef();
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    props.addPost();
   };
 
   let newPostText = () => {
     let text = addPostText.current.value;
-    props.dispatch(changePostTextActionCreator(text));
+    props.newPostText(text);
   };
 
   let cleanPostText = () => {
-    props.dispatch(cleanPostTextActionCreator());
+    props.cleanPostText();
   };
 
   return (
@@ -57,7 +42,7 @@ export const PostList = (props) => {
           label="Publish"
         />
       </div>
-      <div>{postElements}</div>
+      <PostContainer post={props.postList} dispatch={props.dispatch} />
     </div>
   );
 };

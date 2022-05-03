@@ -1,8 +1,4 @@
 import React, { useRef, useState } from "react";
-import {
-  deletePostActionCreator,
-  pinPostActionCreator,
-} from "../../../../../redux/store";
 import styles from "./post.module.scss";
 import { Menu } from "primereact/menu";
 import { Button } from "primereact/button";
@@ -11,10 +7,10 @@ import { ToggleButton } from "primereact/togglebutton";
 
 export const Post = (props) => {
   let deletePost = () => {
-    props.dispatch(deletePostActionCreator(props.id));
+    props.deletePost(props.id);
   };
   let pinPost = () => {
-    props.dispatch(pinPostActionCreator(props.id));
+    props.pinPost(props.id);
   };
 
   let items = [
