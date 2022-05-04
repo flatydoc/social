@@ -4,10 +4,8 @@
     "postText postOptionsBtn"
     "commentText likesPost";
   grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 48px;
+  grid-template-columns: 1fr 68px;
   gap: 20px;
-
-  position: relative;
 
   margin-bottom: 20px;
   padding: 20px;
@@ -19,41 +17,44 @@
 
   .postText {
     grid-area: postText;
-    border: 1px solid green;
     overflow: scroll;
+
     padding: 10px;
+
     line-height: 30px;
   }
   .postOptionsBtn {
     grid-area: postOptionsBtn;
 
+    width: 48px;
+    height: 40px;
+    margin-left: auto;
     border: none;
 
     background-color: transparent;
-    border: 1px solid yellow;
-    width: 48px;
-    height: 40px;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   .commentText {
     grid-area: commentText;
 
-    border-radius: 10px;
     height: 40px;
+    border-radius: 10px;
 
     background-color: var(--active);
   }
 
-  .likesPost {
+  .likePost {
+    grid-area: likesPost;
+
     display: flex;
     align-items: center;
-    grid-area: likesPost;
-    border: 1px solid red;
 
-    .likesPostBtn {
-      background-color: transparent;
-      width: 20px;
-      height: 10px;
+    .likePostBtn {
+      padding-right: 10px;
     }
   }
 }

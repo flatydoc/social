@@ -8,12 +8,16 @@ export const PostItem = (props) => {
   let pinPost = (id) => {
     props.pinPost(id);
   };
+  let likePost = (likesCount, id) => {
+    props.likePost(likesCount, id);
+  };
   let postElements = props.profile.postData.map((post, index) => (
     <Post
       key={index}
       id={post.id}
       text={post.text}
       likesCount={post.likesCount}
+      likePost={likePost}
       deletePost={deletePost}
       pinPost={pinPost}
     />

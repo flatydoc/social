@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import {
   deletePostActionCreator,
+  likePostActionCreator,
   pinPostActionCreator,
 } from "../../../../../redux/profileReducer";
 import { PostItem } from "./PostItem";
@@ -18,6 +19,9 @@ let mapDispatchToProps = (dispatch) => {
     },
     pinPost: (id) => {
       dispatch(pinPostActionCreator(id));
+    },
+    likePost: (likesCount, id) => {
+      dispatch(likePostActionCreator(likesCount, id));
     },
   };
 };

@@ -3,7 +3,6 @@ import styles from "./post.module.scss";
 import { Menu } from "primereact/menu";
 import { Button } from "primereact/button";
 import { ConfirmDialog } from "primereact/confirmdialog";
-import { ToggleButton } from "primereact/togglebutton";
 
 export const Post = (props) => {
   let deletePost = () => {
@@ -11,6 +10,9 @@ export const Post = (props) => {
   };
   let pinPost = () => {
     props.pinPost(props.id);
+  };
+  let likePost = () => {
+    props.likePost(props.likesCount, props.id);
   };
 
   let items = [
@@ -31,7 +33,6 @@ export const Post = (props) => {
   ];
 
   const menu = useRef(null);
-  const [checked, setChecked] = useState(false);
   const [visible, setVisible] = useState(false);
 
   return (
@@ -44,17 +45,20 @@ export const Post = (props) => {
       />
       <Menu model={items} popup ref={menu} />
       <div className={styles.commentText}></div>
-      <div className={styles.likesPost}>
+      <div className={styles.likePost}>
+        {/* <Button
+          onClick={likePost}
+          icon="pi pi-heart"
+          className="p-button-rounded p-button-help p-button-text"
+          aria-label="Favorite"
+        /> */}
+        <button onClick={likePost} className={styles.likePostBtn}>
+          <i
+            className="pi pi-heart"
+            style={{ color: "red", fontSize: "2em" }}
+          ></i>
+        </button>
         <p>{props.likesCount}</p>
-        <ToggleButton
-          className={styles.likesPostBtn}
-          checked={checked}
-          onChange={(e) => setChecked(e.value)}
-          onIcon="pi pi-heart-fill"
-          offIcon="pi pi-heart"
-          onLabel
-          offLabel
-        />
       </div>
       <ConfirmDialog
         visible={visible}
