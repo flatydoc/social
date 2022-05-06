@@ -1,7 +1,7 @@
 import React from "react";
 import { Post } from "./Post";
 
-export const PostItem = (props) => {
+export const PostItems = (props) => {
   let deletePost = (id) => {
     props.deletePost(id);
   };
@@ -16,6 +16,7 @@ export const PostItem = (props) => {
       key={index}
       id={post.id}
       text={post.text}
+      like={post.like}
       likesCount={post.likesCount}
       likePost={likePost}
       deletePost={deletePost}

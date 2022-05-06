@@ -16,7 +16,7 @@ export const Settings = (props) => {
             onChange={(e) => setChecked(e.value)}
           />
         </button>
-        <p>Light mode</p>
+        <p className="pl-3">Light mode</p>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import {
-  deletePostActionCreator,
-  likePostActionCreator,
-  pinPostActionCreator,
+  deletePostAC,
+  likePostAC,
+  pinPostAC,
 } from "../../../../../redux/profileReducer";
-import { PostItem } from "./PostItem";
+
+import { PostItems } from "./PostItems";
 
 let mapStateToProps = (state) => {
   return {
@@ -15,13 +16,13 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     deletePost: (id) => {
-      dispatch(deletePostActionCreator(id));
+      dispatch(deletePostAC(id));
     },
     pinPost: (id) => {
-      dispatch(pinPostActionCreator(id));
+      dispatch(pinPostAC(id));
     },
     likePost: (likesCount, id) => {
-      dispatch(likePostActionCreator(likesCount, id));
+      dispatch(likePostAC(likesCount, id));
     },
   };
 };
@@ -29,4 +30,4 @@ let mapDispatchToProps = (dispatch) => {
 export const PostContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostItem);
+)(PostItems);

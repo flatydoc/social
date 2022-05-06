@@ -1,13 +1,44 @@
 const SEND_MESSAGE = "SEND-MESSAGE";
 const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT";
+const SET_CHAT_LIST = "SET-CHAT-LIST";
 
 let initialState = {
   chatListData: [
-    { id: 0, name: "Greg", value: 1 },
-    { id: 1, name: "Denis", value: 0 },
-    { id: 2, name: "Vlad", value: 0 },
-    { id: 3, name: "Oleg", value: 0 },
-    { id: 4, name: "Alex", value: 0 },
+    {
+      id: 0,
+      name: "Greg",
+      avatarUrl:
+        "https://icons.iconarchive.com/icons/hopstarter/superhero-avatar/128/Avengers-Black-Widow-icon.png",
+      value: 1,
+    },
+    {
+      id: 1,
+      name: "Denis",
+      avatarUrl:
+        "https://icons.iconarchive.com/icons/hopstarter/superhero-avatar/128/Avengers-Nick-Fury-icon.png",
+      value: 0,
+    },
+    {
+      id: 2,
+      name: "Vlad",
+      avatarUrl:
+        "https://icons.iconarchive.com/icons/hopstarter/superhero-avatar/128/Avengers-Captain-America-icon.png",
+      value: 0,
+    },
+    {
+      id: 3,
+      name: "Oleg",
+      avatarUrl:
+        "https://icons.iconarchive.com/icons/hopstarter/superhero-avatar/128/Avengers-Iron-Man-icon.png",
+      value: 0,
+    },
+    {
+      id: 4,
+      name: "Alex",
+      avatarUrl:
+        "https://icons.iconarchive.com/icons/hopstarter/superhero-avatar/128/Avengers-Loki-icon.png",
+      value: 0,
+    },
   ],
 
   chatMessagesData: [],
@@ -33,15 +64,24 @@ export const messangerReducer = (state = initialState, action) => {
         ...state,
         newMessageText: action.newText,
       };
+    case SET_CHAT_LIST:
+      return {
+        ...state,
+        chatListData: [...state.chatListData, ...action.chatListData],
+      };
     default:
       return state;
   }
 };
-export const sendMessageActionCreator = () => ({
+export const sendMessageAC = () => ({
   type: SEND_MESSAGE,
 });
 
-export const changeMessageTextActionCreator = (text) => ({
+export const changeMessageTextAC = (text) => ({
   type: CHANGE_MESSAGE_TEXT,
   newText: text,
+});
+
+export const setChatListAC = (chatListData) => ({
+  type: SET_CHAT_LIST,
 });

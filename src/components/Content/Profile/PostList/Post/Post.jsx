@@ -3,6 +3,7 @@ import styles from "./post.module.scss";
 import { Menu } from "primereact/menu";
 import { Button } from "primereact/button";
 import { ConfirmDialog } from "primereact/confirmdialog";
+import { PrimeIcons } from "primereact/api";
 
 export const Post = (props) => {
   let deletePost = () => {
@@ -46,18 +47,13 @@ export const Post = (props) => {
       <Menu model={items} popup ref={menu} />
       <div className={styles.commentText}></div>
       <div className={styles.likePost}>
-        {/* <Button
+        <button
           onClick={likePost}
-          icon="pi pi-heart"
-          className="p-button-rounded p-button-help p-button-text"
-          aria-label="Favorite"
-        /> */}
-        <button onClick={likePost} className={styles.likePostBtn}>
-          <i
-            className="pi pi-heart"
-            style={{ color: "red", fontSize: "2em" }}
-          ></i>
-        </button>
+          className={`${
+            props.like === false ? PrimeIcons.HEART : PrimeIcons.HEART_FILL
+          } ${styles.likePostBtn} pr-3`}
+          style={{ color: "red", fontSize: "2em" }}
+        ></button>
         <p>{props.likesCount}</p>
       </div>
       <ConfirmDialog
@@ -70,4 +66,39 @@ export const Post = (props) => {
       />
     </div>
   );
+
+  // return (
+  //   <div>
+  //     {props.profile.postData.map((post, index) => (
+  //       <div key={index} className={styles.post}>
+  //         <div className={styles.postText}>{post.text}</div>
+  //         <Button
+  //           className={styles.postOptionsBtn}
+  //           icon="pi pi-ellipsis-h"
+  //           onClick={(event) => menu.current.toggle(event)}
+  //         />
+  //         <Menu model={items} popup ref={menu} />
+  //         <div className={styles.commentText}></div>
+  //         <div className={styles.likePost}>
+  //           <button
+  //             onClick={likePost}
+  //             className={`${
+  //               post.like === false ? PrimeIcons.HEART : PrimeIcons.HEART_FILL
+  //             } ${styles.likePostBtn} pr-3`}
+  //             style={{ color: "red", fontSize: "2em" }}
+  //           ></button>
+  //           <p>{post.likesCount}</p>
+  //         </div>
+  //         <ConfirmDialog
+  //           visible={visible}
+  //           onHide={() => setVisible(false)}
+  //           header="Delete ?"
+  //           message="Are you sure you want to delete the post?"
+  //           icon="pi pi-trash"
+  //           accept={deletePost}
+  //         />
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 };

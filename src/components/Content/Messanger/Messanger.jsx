@@ -3,7 +3,7 @@ import { ChatListContainer } from "./ChatList/ChatListContainer";
 import { ChatMessagesContainer } from "./ChatMessages/ChatMessagesContainer";
 import styles from "./messanger.module.scss";
 
-export const Messanger = (props) => {
+export const Messanger = () => {
   return (
     <section className={styles.messanger}>
       <h2>Messanger</h2>

@@ -16,6 +16,7 @@ export const profileReducer = (state = initialState, action) => {
       let newPost = {
         id: state.postData.forEach((item, i) => (item.id = i + 1)),
         text: state.newPostText,
+        like: false,
         likesCount: 0,
       };
       return {
@@ -42,18 +43,30 @@ export const profileReducer = (state = initialState, action) => {
       stateCopy.postData.splice(0, 0, stateCopy.postData.splice(i, 1)[0]);
       return stateCopy;
     }
-    case LIKE_POST: {
-      let stateCopy = {
+    // case LIKE_POST: {
+    //   let stateCopy = {
+    //     ...state,
+    //     postData: [...state.postData],
+    //   };
+    //   stateCopy.postData.forEach((post) =>
+    //     post.id === action.id
+    //       ? (post.likesCount = post.likesCount + 1)
+    //       : post.likesCount
+    //   );
+    //   return stateCopy;
+    // }
+    case LIKE_POST:
+      return {
         ...state,
-        postData: [...state.postData],
+        postData: state.postData.map((post) => {
+          if (post.id === action.id && post.like === false) {
+            return { ...post, likesCount: action.likesCount + 1, like: true };
+          } else if (post.id === action.id && post.like === true) {
+            return { ...post, likesCount: action.likesCount - 1, like: false };
+          }
+          return post;
+        }),
       };
-      stateCopy.postData.forEach((post) =>
-        post.id === action.id
-          ? (post.likesCount = post.likesCount + 1)
-          : post.likesCount
-      );
-      return stateCopy;
-    }
     case CHANGE_POST_TEXT: {
       return {
         ...state,
@@ -71,31 +84,31 @@ export const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = () => ({
+export const addPostAC = () => ({
   type: ADD_POST,
 });
 
-export const pinPostActionCreator = (id) => ({
+export const pinPostAC = (id) => ({
   type: PIN_POST,
   id: id,
 });
 
-export const likePostActionCreator = (likesCount, id) => ({
+export const likePostAC = (likesCount, id) => ({
   type: LIKE_POST,
   likesCount: likesCount,
   id: id,
 });
 
-export const deletePostActionCreator = (id) => ({
+export const deletePostAC = (id) => ({
   type: DELETE_POST,
   id: id,
 });
 
-export const changePostTextActionCreator = (text) => ({
+export const changePostTextAC = (text) => ({
   type: CHANGE_POST_TEXT,
   newText: text,
 });
 
-export const cleanPostTextActionCreator = () => ({
+export const cleanPostTextAC = () => ({
   type: CLEAN_POST_TEXT,
 });

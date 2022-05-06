@@ -9,7 +9,7 @@ import styles from "./app.module.scss";
 import useLocalStorage from "use-local-storage";
 import { SideBarContainer } from "./SideBar/SideBarContainer";
 
-export const App = (props) => {
+export const App = () => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",

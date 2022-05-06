@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {
-  sendMessageActionCreator,
-  changeMessageTextActionCreator,
+  sendMessageAC,
+  changeMessageTextAC,
 } from "../../../../redux/messangerReducer";
 import { ChatMessages } from "./ChatMessages";
 
@@ -14,10 +14,10 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     sendMessage: () => {
-      dispatch(sendMessageActionCreator());
+      dispatch(sendMessageAC());
     },
     newMessageText: (text) => {
-      dispatch(changeMessageTextActionCreator(text));
+      dispatch(changeMessageTextAC(text));
     },
   };
 };
