@@ -1,3 +1,6 @@
 .chatList {
-  border: 1px solid red;
+  grid-area: chatList;
+
+  border-radius: 10px;
+  box-shadow: 4px 2px 21px 3px rgba(32, 33, 36, 0.5);
 }

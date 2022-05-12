@@ -22,7 +22,7 @@ export const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         newPostText: "",
-        postData: [...state.postData, newPost],
+        postData: [newPost, ...state.postData],
       };
     }
     case DELETE_POST: {

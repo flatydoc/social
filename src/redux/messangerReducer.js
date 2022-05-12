@@ -1,6 +1,5 @@
 const SEND_MESSAGE = "SEND-MESSAGE";
 const CHANGE_MESSAGE_TEXT = "CHANGE-MESSAGE-TEXT";
-const SET_CHAT_LIST = "SET-CHAT-LIST";
 
 let initialState = {
   chatListData: [
@@ -64,11 +63,6 @@ export const messangerReducer = (state = initialState, action) => {
         ...state,
         newMessageText: action.newText,
       };
-    case SET_CHAT_LIST:
-      return {
-        ...state,
-        chatListData: [...state.chatListData, ...action.chatListData],
-      };
     default:
       return state;
   }
@@ -80,8 +74,4 @@ export const sendMessageAC = () => ({
 export const changeMessageTextAC = (text) => ({
   type: CHANGE_MESSAGE_TEXT,
   newText: text,
-});
-
-export const setChatListAC = (chatListData) => ({
-  type: SET_CHAT_LIST,
 });

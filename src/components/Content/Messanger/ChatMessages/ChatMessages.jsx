@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./chatMessages.module.scss";
 import { Message } from "./Message/Message";
+import { InputTextarea } from "primereact/inputtextarea";
+import { Button } from "primereact/button";
 
 export const ChatMessages = (props) => {
   let chatMessagesElements = props.messanger.chatMessagesData.map(
@@ -22,17 +24,22 @@ export const ChatMessages = (props) => {
 
   return (
     <div className={styles.chatMessages}>
-      <h3>Chat Messages</h3>
-      <textarea
-        onChange={newMessageText}
-        ref={sendMessageText}
-        className={styles.sendMessageText}
-        value={props.messanger.newMessageText}
-      />
-      <button onClick={sendMessage} className={styles.sendMessageBtn}>
-        Send Message
-      </button>
-      <div>{chatMessagesElements}</div>
+      <div className={styles.messagesArea}>{chatMessagesElements}</div>
+      <div className={styles.sendMessage}>
+        <InputTextarea
+          onChange={newMessageText}
+          ref={sendMessageText}
+          className={styles.sendMessageText}
+          value={props.messanger.newMessageText}
+          placeholder="Enter message"
+          autoResize
+        />
+        <Button
+          onClick={sendMessage}
+          icon="pi pi-send"
+          className={styles.sendMessageBtn}
+        />
+      </div>
     </div>
   );
 };

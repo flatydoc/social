@@ -1,15 +1,26 @@
 .chatItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
-  width: 200px;
-  margin-bottom: 10px;
+  margin: 10px;
+  padding: 0 10px;
   border-radius: 10px;
 
+  transition: all 0.5s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--active);
+  }
+
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+
+  .badge {
+    margin-left: auto;
   }
 }
 

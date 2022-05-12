@@ -7,6 +7,7 @@
   width: 80%;
   height: 40px;
   margin: 0 auto 10px auto;
+  padding: 10px;
   border-radius: 10px;
 
   color: var(--white);
@@ -19,11 +20,11 @@
   }
 
   .icon {
-    margin: 0 10px;
+    margin-right: 10px;
   }
 
   .badge {
-    margin: 0 10px 0 auto;
+    margin-left: auto;
   }
 
   @media (max-width: 768px) {
