@@ -17,7 +17,7 @@ export const SignInPage = () => {
 
   return (
     <div className={styles.popup}>
-      <h3>Sign In</h3>
+      <h2>Sign In</h2>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="p-float-label">
           <InputText name="name" id="inputtext" onChange={changeHandler} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
@@ -8,6 +8,8 @@ import { Content } from "./Content/Content";
 import styles from "./app.module.scss";
 import useLocalStorage from "use-local-storage";
 import { SideBarContainer } from "./SideBar/SideBarContainer";
+import { SignUpPage } from "../pages/SignUpPage/SignUpPage";
+import { useRoutes } from "../routes";
 
 export const App = () => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -21,12 +23,23 @@ export const App = () => {
     setTheme(newTheme);
   };
 
+  const routes = useRoutes();
+
   return (
     <BrowserRouter>
       <div className={styles.app} data-theme={theme}>
-        <Header />
-        <SideBarContainer />
-        <Content switchTheme={switchTheme} />
+        <Routes>
+          <Route
+            path="/*"
+            element={[
+              <Header />,
+              <SideBarContainer />,
+              <Content switchTheme={switchTheme} />,
+            ]}
+          />
+          {routes}
+          <Route path="/signup" element={<SignUpPage />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );

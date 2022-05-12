@@ -6,8 +6,6 @@ import { Messanger } from "./Messanger/Messanger";
 import { News } from "./News/News";
 import { Friends } from "./Friends/Friends";
 import { Settings } from "./Settings/Settings";
-import { SignInPage } from "../../pages/SignInPage/SignInPage";
-import { SignUpPage } from "../../pages/SignUpPage/SignUpPage";
 
 export const Content = (props) => {
   return (
@@ -21,8 +19,6 @@ export const Content = (props) => {
           path="/settings/*"
           element={<Settings switchTheme={props.switchTheme} />}
         />
-        <Route path="/signin/*" element={<SignInPage />} />
-        <Route path="/signup/*" element={<SignUpPage />} />
       </Routes>
     </main>
   );
