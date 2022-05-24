@@ -1,7 +1,7 @@
 import React from "react";
 import { Content } from "../../components/Content/Content";
 import { Header } from "../../components/Header/Header";
-import { SideBarContainer } from "../../components/SideBar/SideBarContainer";
+import { SideBarContainer } from "../../components/Sidebar/SideBarContainer";
 import styles from "./mainPage.module.scss";
 
 export const MainPage = (props) => {
