@@ -43,15 +43,17 @@ export const Post = (props) => {
         className={styles.postOptionsBtn}
         icon="pi pi-ellipsis-h"
         onClick={(event) => menu.current.toggle(event)}
+        aria-label="Options"
       />
       <Menu model={items} popup ref={menu} />
       <div className={styles.commentText}></div>
       <div className={styles.likePost}>
         <button
+          aria-label="Like post"
           onClick={likePost}
           className={`${
             props.like === false ? PrimeIcons.HEART : PrimeIcons.HEART_FILL
-          } ${styles.likePostBtn} pr-3`}
+          } pr-3`}
           style={{ color: "red", fontSize: "2em" }}
         ></button>
         <p>{props.likesCount}</p>

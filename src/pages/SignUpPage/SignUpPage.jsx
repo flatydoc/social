@@ -4,6 +4,8 @@ import axios from "axios";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { NavLink } from "react-router-dom";
+import { config } from "../../config";
 
 export const SignUpPage = () => {
   const [form, setForm] = useState({
@@ -21,13 +23,14 @@ export const SignUpPage = () => {
     try {
       await axios
         .post(
-          "/api/signup/signup",
-          { ...form },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+          `${config.apiUrl}/api/signup`,
+          { ...form }
+          // {
+          //   headers: {
+          //     "Access-Control-Allow-Origin": "*",
+          //     "Content-Type": "application/json",
+          //   },
+          // }
         )
         .then((res) => console.log(res));
     } catch (error) {
@@ -39,25 +42,43 @@ export const SignUpPage = () => {
     <div className={styles.popup}>
       <h2>Sign Up</h2>
       <form className={styles.popupForm} onSubmit={(e) => e.preventDefault()}>
-        <div className={`p-float-label ${styles.formInput}`}>
-          <InputText name="name" id="inputtext" onChange={changeHandler} />
-          <label htmlFor="inputtext">Name</label>
+        <div className={`p-float-label w-full ${styles.input}`}>
+          <InputText
+            name="name"
+            id="name"
+            onChange={changeHandler}
+            className={"w-full"}
+          />
+          <label htmlFor="name">Name</label>
         </div>
-        <div className={`p-float-label ${styles.formInput}`}>
-          <InputText name="email" id="inputtext" onChange={changeHandler} />
-          <label htmlFor="inputtext">Email</label>
+        <div className={`p-float-label w-full ${styles.input}`}>
+          <InputText
+            name="email"
+            id="email"
+            onChange={changeHandler}
+            className={"w-full"}
+          />
+          <label htmlFor="email">Email</label>
         </div>
-        <div className={`p-float-label ${styles.formInput}`}>
+        <div className={`p-float-label w-full ${styles.input}`}>
           <Password
             name="password"
             inputId="password"
             onChange={changeHandler}
             toggleMask
+            feedback={true}
+            className={"w-full"}
           />
           <label htmlFor="password">Password</label>
         </div>
         <Button onClick={registerHandler} label="Sign Up" />
       </form>
+      <div className="flex align-items-center justify-content-between">
+        <p>Do you already have an account?</p>
+        <NavLink className={styles.link} to="/signin">
+          Sign in
+        </NavLink>
+      </div>
     </div>
   );
 };

@@ -35,6 +35,7 @@ export const PostList = (props) => {
           onClick={cleanPostText}
           className={styles.postBtn}
           icon="pi pi-trash"
+          aria-label="Clean post text"
         />
         <Button
           onClick={addPost}

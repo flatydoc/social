@@ -11,6 +11,13 @@ export const ChatMessages = (props) => {
     )
   );
 
+  let messagesCount = props.messanger.chatMessagesData.length;
+  if (messagesCount === 0) {
+    document.title = "Social";
+  } else {
+    document.title = `Social (${messagesCount})`;
+  }
+
   let sendMessageText = React.createRef();
 
   let sendMessage = () => {
@@ -37,6 +44,7 @@ export const ChatMessages = (props) => {
         <Button
           onClick={sendMessage}
           icon="pi pi-send"
+          aria-label="Send message"
           className={styles.sendMessageBtn}
         />
       </div>
