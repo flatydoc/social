@@ -6,16 +6,17 @@ import useLocalStorage from "use-local-storage";
 export const Settings = (props) => {
   const [checked, setChecked] = useLocalStorage(false);
 
+  const switchTheme = (e) => {
+    setChecked(e.value);
+    props.switchTheme();
+  };
+
   return (
     <section className={styles.settings}>
       <h2>Settings</h2>
       <div className={styles.settingItem}>
-        <button onClick={props.switchTheme}>
-          <InputSwitch
-            checked={checked}
-            onChange={(e) => setChecked(e.value)}
-          />
-        </button>
+        <InputSwitch checked={checked} onChange={switchTheme} />
+
         <p className="pl-3">Light mode</p>
       </div>
     </section>

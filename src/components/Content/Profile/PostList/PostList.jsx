@@ -4,8 +4,8 @@ import axios from "axios";
 import styles from "./postList.module.scss";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-//import { PostContainer } from "./Post/PostContainer";
 import { config } from "../../../../config";
+import { Post } from "./Post/Post";
 
 export const PostList = () => {
   const [text, setText] = useState("");
@@ -32,6 +32,7 @@ export const PostList = () => {
   }, [getPost]);
 
   const createPost = async () => {
+    if (!userId) return null;
     if (!text) return null;
     try {
       await axios
@@ -81,17 +82,63 @@ export const PostList = () => {
     }
   };
 
+  const cleanPostText = () => {
+    setText("");
+  };
+
+  const changeHandler = (e) => {
+    setText(e.target.value);
+  };
+
+  const tags = [];
+
+  const addTag = () => {
+    let newTag = text.split(" ").filter((el) => el.includes("#"));
+
+    console.log(newTag);
+    tags.push.apply(tags, newTag);
+    return tags;
+  };
+
+  console.log(tags);
+
+  // let tagsText = text
+  //   .split(" ")
+  //   .filter((el) => el.includes("#"))
+  //   .join(", ");
+
+  // const createTags = () => {
+  //   let newTag = {
+  //     text: tagsText,
+  //   };
+  //   tags.push(newTag);
+  // };
+
+  let postElements = posts.map((post, index) => (
+    <Post
+      key={index}
+      id={post._id}
+      text={post.text}
+      like={post.like}
+      likePost={likePost}
+      likesCount={post.likesCount}
+      removePost={removePost}
+    />
+  ));
+
   return (
     <div className={styles.postList}>
+      <div>{addTag()}</div>
       <form onSubmit={(e) => e.preventDefault()} className={styles.addPost}>
         <InputTextarea
-          onChange={(e) => setText(e.target.value)}
+          onChange={changeHandler}
           value={text}
           className={styles.addPostText}
           placeholder="Anything new?"
           autoResize
         />
         <Button
+          onClick={cleanPostText}
           className={styles.postBtn}
           icon="pi pi-trash"
           aria-label="Clean post text"
@@ -102,62 +149,41 @@ export const PostList = () => {
           label="Publish"
         />
       </form>
-      {posts.map((post, index) => {
+      {/* {posts.map((post, index) => {
         return (
-          <div key={index}>
-            <div>{index + 1}</div>
-            <div>{post.text}</div>
+          <div key={index} className={styles.post}>
+            <div className={styles.postText}>{post.text}</div>
             <Button
-              onClick={() => removePost(post._id)}
-              className={styles.addPostBtn}
-              label="Delete"
+              className={styles.postOptionsBtn}
+              icon="pi pi-ellipsis-h"
+              onClick={(event) => menu.current.toggle(event)}
+              aria-label="Options"
             />
-            <Button
-              onClick={() => likePost(post._id)}
-              className={styles.addPostBtn}
-              label="Like"
+            <Menu model={items} popup ref={menu} />
+            <div className={styles.commentText}></div>
+            <div className={styles.likePost}>
+              <button
+                aria-label="Like post"
+                onClick={() => likePost(post._id)}
+                className={`${
+                  post.like === false ? PrimeIcons.HEART : PrimeIcons.HEART_FILL
+                } pr-3`}
+                style={{ color: "red", fontSize: "2em" }}
+              ></button>
+              <p>{post.likesCount}</p>
+            </div>
+            <ConfirmDialog
+              visible={visible}
+              onHide={() => setVisible(false)}
+              header="Delete ?"
+              message="Are you sure you want to delete the post?"
+              icon="pi pi-trash"
+              accept={() => removePost(post._id)}
             />
           </div>
         );
-      })}
+      })} */}
+      {postElements}
     </div>
   );
-
-  // let addPostText = React.createRef();
-  // let addPost = () => {
-  //   props.addPost();
-  // };
-  // let newPostText = () => {
-  //   let text = addPostText.current.value;
-  //   props.newPostText(text);
-  // };
-  // let cleanPostText = () => {
-  //   props.cleanPostText();
-  // };
-  // return (
-  //   <div className={styles.postList}>
-  //     <div className={styles.addPost}>
-  //       <InputTextarea
-  //         onChange={newPostText}
-  //         ref={addPostText}
-  //         value={props.profile.newPostText}
-  //         className={styles.addPostText}
-  //         placeholder="Anything new?"
-  //         autoResize
-  //       />
-  //       <Button
-  //         onClick={cleanPostText}
-  //         className={styles.postBtn}
-  //         icon="pi pi-trash"
-  //         aria-label="Clean post text"
-  //       />
-  //       <Button
-  //         onClick={addPost}
-  //         className={styles.addPostBtn}
-  //         label="Publish"
-  //       />
-  //     </div>
-  //     <PostContainer />
-  //   </div>
-  // );
 };

@@ -37,7 +37,9 @@ export const App = () => {
             <Route path="/*" element={<MainPage switchTheme={switchTheme} />} />
             <Route
               path="/signin"
-              element={isLogin ? <Navigate to="/" replace /> : <SignInPage />}
+              element={
+                isLogin ? <Navigate to="/profile" replace /> : <SignInPage />
+              }
             />
             <Route path="/signup" element={<SignUpPage />} />
           </Routes>
